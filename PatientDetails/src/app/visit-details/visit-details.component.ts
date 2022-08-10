@@ -46,8 +46,8 @@ export class VisitDetailsComponent implements OnInit {
    
   
   //SHOULD GET FROM OTHER SERVICE, HOW IS CALLING THIS SERVICE
-  appointmentId:any=1;
-  patientId:any = 1;
+  hardCodedPatientId=this.patientDetailService.hardCodedPatientId;
+  hardCodedAppointmentId=this.patientDetailService.hardCodedAppointmentId;
 
   //VITAL SIGN DATA
   height:any;
@@ -237,8 +237,8 @@ displayFnMedication(item:any){
       this.medicationObj.drugName = this.drugName;
       this.medicationObj.drugStrength = this.drugStrength;
 
-      this.visitDetailRequest.patientId = this.patientId;
-      this.visitDetailRequest.appointmentId = this.appointmentId;
+      this.visitDetailRequest.patientId = this.hardCodedPatientId;
+      this.visitDetailRequest.appointmentId = this.hardCodedAppointmentId;
       this.visitDetailRequest.vitalSign = this.vitalSignObj;
       this.visitDetailRequest.diagnosis = this.diagnosisObjArray;
       this.visitDetailRequest.procedure = this.procedureObj;

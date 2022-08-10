@@ -9,6 +9,9 @@ import { UserPatient } from 'src/model/UserPatient';
 })
 export class PatientDetailsService {
 
+  hardCodedPatientId=1;
+  hardCodedAppointmentId=1
+
 userDetailObj :UserPatient = new UserPatient();
 isNewPatient_srvc:boolean=false
   private DEMOGRAPHIC_BASE_URL: string = 'http://localhost:8081/demographic_details';

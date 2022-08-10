@@ -16,14 +16,14 @@ import { PatientDetailsService } from '../patient-details.service';
 export class DemographicDetailsComponent implements OnInit {
 
   existginPatientDemogrphic:DemographicDetails = new DemographicDetails();
-
+isNewPatient:boolean=false;
   constructor(private formBuilder: FormBuilder,private patientDetailsService: PatientDetailsService
     ,private router: Router,private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
-
+this.isNewPatient = this.patientDetailsService.isNewPatient_srvc;
     if(this.patientDetailsService.demographicDetail != null){
-      
+
       this.existginPatientDemogrphic = this.patientDetailsService.demographicDetail;
 
       this.gender = this.existginPatientDemogrphic.gender;
@@ -37,8 +37,8 @@ export class DemographicDetailsComponent implements OnInit {
     }
   }
   //GET FROM OTHER SERVICE
-  patientId=1;
-  appointmetnId=1
+  hardCodedPatientId=this.patientDetailsService.hardCodedPatientId;
+  hardCodedAppointmentId=this.patientDetailsService.hardCodedAppointmentId;
 
   emergencyContactForm:any;
   submitted = false;
@@ -208,7 +208,7 @@ export class DemographicDetailsComponent implements OnInit {
     this.allergyObj.allergyClinicalInfo = this.allergyCinfo;
     this.allergyObj.isFatal = this.isAlergyFatal;
 
-    this.demographicRequestBody.patientId = this.patientId;
+    this.demographicRequestBody.patientId = this.hardCodedPatientId;
     this.demographicRequestBody.demographicDetails = this.demographicObj;
     this.demographicRequestBody.emergencyContact = this.emergencyContactInfoObj;
     this.demographicRequestBody.allergy.push(this.allergyObj);

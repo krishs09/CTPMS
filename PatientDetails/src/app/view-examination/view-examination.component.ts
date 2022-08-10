@@ -14,8 +14,8 @@ import { PatientDetailsService } from '../patient-details.service';
 export class ViewExaminationComponent implements OnInit {
 
   //SHOULD GET FROM OTHER SERVICE, HOW IS CALLING THIS SERVICE
-  appointmentId:any=1;
-  patientId:any = 1;
+  hardCodedPatientId=this.patientDetailsService.hardCodedPatientId;
+  hardCodedAppointmentId=this.patientDetailsService.hardCodedAppointmentId;
   
   vitalSignObj: VitalSigns = new VitalSigns();
   diagnosisObjArray:Diagnosis []= [];
@@ -27,7 +27,7 @@ export class ViewExaminationComponent implements OnInit {
   constructor(private patientDetailsService: PatientDetailsService) { }
 
   ngOnInit(): void {
-    this.patientDetailsService.getVisitdetail(this.patientId,this.appointmentId)
+    this.patientDetailsService.getVisitdetail(this.hardCodedPatientId,this.hardCodedAppointmentId)
     .subscribe(data=>{
       this.visitBody = JSON.parse(JSON.stringify(data));
       console.log("Visit data: "+JSON.stringify(data));

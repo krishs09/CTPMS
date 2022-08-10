@@ -10,6 +10,8 @@ import { PatientDetailsService } from '../patient-details.service';
 })
 export class HomeComponent implements OnInit {
 
+hardCodedPatientId =this.patientDetailService.hardCodedPatientId;
+
   firstname:string="";
   lastname:string="";
   email:string="";
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.patientDetailService.getDemographicDetails(1)
+    this.patientDetailService.getDemographicDetails(this.hardCodedPatientId)
     .subscribe(data=>{
       if(data == null){
         this.patientDetailService.isNewPatient_srvc = true;
@@ -37,7 +39,7 @@ export class HomeComponent implements OnInit {
     // Call USER MODULE SERVICE TO GET USER DETAILS BY ID WHICH WILL BE PASSED 
     //BY OTHER MODULE WHICH HAS CALLED THIS MODULE
 
-    this.patientDetailService.getPatientDetailsById(1).subscribe(data=>{
+    this.patientDetailService.getPatientDetailsById(this.hardCodedPatientId).subscribe(data=>{
       console.log(JSON.stringify(data));
       this.userData = data;
       this.firstname = this.userData.firstname;
@@ -49,9 +51,10 @@ export class HomeComponent implements OnInit {
     //this.patientDetailService.userDetailObj.dateOfBirth = '12/01/1990';
     });
 
-    this.patientDetailService.getAllAppointments(1).subscribe(data=>{
+    this.patientDetailService.getAllAppointments(this.hardCodedPatientId).subscribe(data=>{
       this.appointmentArray = JSON.parse(JSON.stringify(data));
       console.log("Appointment list: "+JSON.stringify(this.appointmentArray));
+      console.log("DIdapt happend :"+this.appointmentArray[0].didExaminationhappened);
     })
   }
   isRouterActive:boolean=false;
