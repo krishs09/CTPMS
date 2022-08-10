@@ -1,0 +1,19 @@
+package com.impact.pms.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.impact.pms.model.DiagnosisMaster;
+
+@Repository
+@Transactional
+public interface MasterDiagnosisRepository extends JpaRepository<DiagnosisMaster, Long> {
+
+	@Query(value="Select * from diagnosis_master",nativeQuery = true)
+	public List<DiagnosisMaster> getDiagonis(Specification<DiagnosisMaster> spec);
+}

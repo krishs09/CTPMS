@@ -1,0 +1,33 @@
+package com.impact.pms.model;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name="vital_sign")
+public class VitalSign {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long vitalSignId;
+	private Long patientId;
+	private double height;
+	private double weight;
+	private String bloodPressure;
+	private double bodyTemp;
+	private int respirationRate;
+	private Long appointmentId;
+	
+}

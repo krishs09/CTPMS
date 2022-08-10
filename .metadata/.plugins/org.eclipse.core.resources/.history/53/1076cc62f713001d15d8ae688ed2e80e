@@ -1,0 +1,16 @@
+package com.impact.pms.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.impact.pms.model.Appointment;
+import com.impact.pms.model.VisitDetailsRequest;
+
+@Service
+public interface VisitService {
+
+	public VisitDetailsRequest saveVisitDetails(VisitDetailsRequest request);
+	public Appointment getAppointmentDetails(Long patientId);
+	public List<Object[]> getVisitDetails(Long patientId,Long appointmentId);
+}

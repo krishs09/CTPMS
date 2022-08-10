@@ -1,0 +1,26 @@
+package com.impact.pms.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.impact.pms.model.Appointment;
+
+@Repository
+public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+
+	String querry="select vs.appointment_id, vs.vital_sign_id,vs.blood_pressure,vs.body_temp,vs.height,vs.respiration_rate,vs.weight,\r\n"
+			+ " d.diagnosis_id,d.diagnosis_code,d.diagnosis_descrp,d.is_depricated,d.appointment_id,\r\n"
+			+ " m.medication_id,m.drug_brand,m.drug_form,m.drug_generic_name,m.drug_id,m.drug_name,m.drug_strength,m.appointment_id,\r\n"
+			+ " pr.procedure_id,pr.is_depricated,pr.procedure_code,pr.procedure_descrp,pr.appointment_id\r\n"
+			+ " from vital_sign vs\r\n"
+			+ " join diagnosis d on d.patient_id = vs.patient_id\r\n"
+			+ " join medication m on m.patient_id = vs.patient_id \r\n"
+			+ " join tbl_procedure pr on pr.patient_id = vs.patient_id\r\n"
+			+ " where vs.patient_id =1 and vs.appointment_id =1;";
+	
+	@Query(value=querry,nativeQuery = true)
+	public List<Object[]> getPatientVisitDetails(Long patientId,Long appointmentId);
+}

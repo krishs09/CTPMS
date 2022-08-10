@@ -1,0 +1,24 @@
+package com.impact.pms.model;
+
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@JsonInclude(content = Include.NON_NULL)
+public class DemographicDetailRequest {
+
+	private DemographicDetails demogrphDetails;
+	private EmergencyContactInfo emergencyContact;
+	private boolean anyAllergy;
+	private Allergy allergy;
+}

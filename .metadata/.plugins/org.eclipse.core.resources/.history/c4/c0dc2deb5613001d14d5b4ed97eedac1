@@ -1,0 +1,119 @@
+package com.impact.pms.model;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name="EmergencyContact")
+public class EmergencyContactInfo {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long emgId;
+	private Long patientId;
+	private String firstName;
+	private String lastName;
+	private String relationship;
+	private String email;
+	private String address;
+	private Long contact;
+	private Boolean accessNeeded;
+	@OneToOne(mappedBy = "emergencyContact")
+	private DemographicDetails demographicDetail;
+	
+	
+	public EmergencyContactInfo() {
+		
+	}
+	public EmergencyContactInfo(Long emgId, Long patientId, String firstName, String lastName, String relationship,
+			String email, String address, Long contact, Boolean accessNeeded, DemographicDetails demographicDetail) {
+		super();
+		this.emgId = emgId;
+		this.patientId = patientId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.relationship = relationship;
+		this.email = email;
+		this.address = address;
+		this.contact = contact;
+		this.accessNeeded = accessNeeded;
+		this.demographicDetail = demographicDetail;
+	}
+	public Long getEmgId() {
+		return emgId;
+	}
+	public void setEmgId(Long emgId) {
+		this.emgId = emgId;
+	}
+	public Long getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getRelationship() {
+		return relationship;
+	}
+	public void setRelationship(String relationship) {
+		this.relationship = relationship;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public Long getContact() {
+		return contact;
+	}
+	public void setContact(Long contact) {
+		this.contact = contact;
+	}
+	public Boolean getAccessNeeded() {
+		return accessNeeded;
+	}
+	public void setAccessNeeded(Boolean accessNeeded) {
+		this.accessNeeded = accessNeeded;
+	}
+	public DemographicDetails getDemographicDetail() {
+		return demographicDetail;
+	}
+	public void setDemographicDetail(DemographicDetails demographicDetail) {
+		this.demographicDetail = demographicDetail;
+	}
+
+	
+}

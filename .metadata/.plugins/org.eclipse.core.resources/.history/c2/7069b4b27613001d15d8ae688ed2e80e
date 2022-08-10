@@ -1,0 +1,14 @@
+package com.impact.pms.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.impact.pms.model.DemographicDetails;
+
+@Repository
+public interface DemographicRepository extends JpaRepository<DemographicDetails, Long>{
+
+	@Query(value = "Select p.patient_id from Patient_Demographic_Details p where p.patient_id= :id",nativeQuery = true)
+	public DemographicDetails findByPatientId(Long id);
+}

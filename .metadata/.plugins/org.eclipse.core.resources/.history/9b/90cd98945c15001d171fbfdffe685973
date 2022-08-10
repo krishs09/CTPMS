@@ -1,0 +1,15 @@
+package com.impact.pms.model;
+
+import java.time.LocalDateTime;
+
+public class MedicationMaster {
+
+	private Long medicationId;
+    private Long drugId; 
+    private String drugName; 
+    private String drugGenericName; 
+    private String drugBrand; 
+    private String drugForm;
+    private String drugStrength; 
+    private LocalDateTime createdAt; 
+}

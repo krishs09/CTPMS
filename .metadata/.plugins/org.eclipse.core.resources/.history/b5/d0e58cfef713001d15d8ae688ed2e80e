@@ -1,0 +1,5 @@
+package com.impact.pms.model;
+
+public class VisitDetailsResponse {
+
+}

@@ -1,0 +1,48 @@
+package com.impact.pms.model;
+
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class DemographicDetailRequest {
+
+	private Long demographicId;
+	private Long patientId;
+	private String firstName;
+	private String lastName;
+	private LocalDate dateOFBirth;
+	private int age;
+	private String gender;
+	private String race;
+	private String ethinicity;
+	private String languagesKnown;
+	private String email;
+	private String homeAddress;
+	private Long contact;
+	
+	private EmergencyContactInfo emergencyContact;
+	 private int anyAllergy;
+
+	  private List<Allergy> allergy =new ArrayList<Allergy>();
+		 

@@ -1,0 +1,9 @@
+package com.impact.pms.model;
+
+public class MasterDataResponse {
+	
+	private DiagnosisMaster diganosisMaster;
+	private ProcedureMaster procedureMaster;
+	private MedicationMaster medicationMaster;
+	
+}

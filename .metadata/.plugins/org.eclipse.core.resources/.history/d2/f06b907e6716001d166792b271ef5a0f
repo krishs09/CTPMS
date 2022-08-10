@@ -1,0 +1,36 @@
+package com.impact.pms.model;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Diagnosis {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long diagnosisId;
+	private Long patientId;
+	private String diagnosisCode;
+	private String diagnosisDescrp;
+	private boolean isDepricated;
+	private Long appointmentId;
+	@Column(nullable = false,updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+	
+}

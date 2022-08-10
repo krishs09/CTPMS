@@ -1,0 +1,10 @@
+#spring.datasource.url=jdbc:mysql://localhost:3306/PatientDetails
+spring.datasource.url=jdbc:mysql://ctgh.czsvh8nubwy4.ap-south-1.rds.amazonaws.com/test2
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql: true
+server.port=8082
+
+server.servlet.context-path=/visit_details
+spring.application.name=Patient_Visit_Details

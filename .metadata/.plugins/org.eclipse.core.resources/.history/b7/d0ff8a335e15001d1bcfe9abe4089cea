@@ -1,0 +1,17 @@
+package com.impact.pms.model;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class MasterDataResponse {
+	
+	private DiagnosisMaster diganosisMaster;
+	private ProcedureMaster procedureMaster;
+	private MedicationMaster medicationMaster;
+	
+}

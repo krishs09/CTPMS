@@ -1,0 +1,19 @@
+package com.impact.pms.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class VisitDetailsResponse {
+
+	private Long patientId;
+	private Long appointmentId;
+	private VitalSign vitalSign;
+	private Diagnosis diagnosis;
+	private Medication medication;
+	private Procedure procedure;
+	
+}

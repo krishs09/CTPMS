@@ -1,0 +1,23 @@
+package com.impact.pms.model;
+
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class DemographicDetailRequest {
+
+	private DemographicDetails demographicDetails;
+	private EmergencyContactInfo emergencyContact;
+	
+	private Allergy allergy;
+}
