@@ -1,5 +1,7 @@
 package com.impact.pms.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +27,7 @@ public class UserPatient {
 	private String firstname;
 	private String lastname;
 	private String email;
+	private LocalDate dateOfBirth;
 
 	
 	

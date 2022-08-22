@@ -27,9 +27,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.FieldNameConstants;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @Entity
 @Table(name="Patient_Demographic_Details")
@@ -76,9 +78,11 @@ public class DemographicDetails  {
 	  @JoinColumn(name = "pat_demographicId", referencedColumnName = "demographic_id") 
 	  @JsonIgnore
 	  private List<Allergy> allergy;
+
 		 
 		/*
 		 * @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy =
 		 * "demographicDetail") private Set<Allergy> allergy = new HashSet<>();
 		 */
+	  
 }

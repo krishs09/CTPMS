@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -201,11 +202,18 @@ public class VisitServiceImpl implements VisitService{
 	@Override
 	public List<Appointment> getPatientsAppoinmentAll(Long patientId) {
 		List<Appointment> apt =appointmentRepo.getPatientsAppoinmentAll(patientId);
+		List<Appointment> retirevedApt = new ArrayList<>();
+		
 		for(Appointment appoint : apt) {
-			int done = checIfDidExamination(appoint.getAppointmentId(),appoint.getPatientId());
-			System.out.println("Done: "+done);
+			Appointment ap = new Appointment();
 			
-			appoint.setDidExaminationhappened(done);
+			BeanUtils.copyProperties(appoint, ap);
+			
+		//	int done = checIfDidExamination(appoint.getAppointmentId(),appoint.getPatientId());
+		//	System.out.println("Done: "+done);
+			
+		//	appoint.setDidExaminationhappened(done);
+			retirevedApt.add(ap);
 		}
 		
 		return apt;

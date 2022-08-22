@@ -19,4 +19,10 @@ public interface DemographicRepository extends JpaRepository<DemographicDetails,
 	@Query(value="Update Patient_Demographic_Details pd set emergency_contact_id = :emgContactId where demographic_id = :demogId", nativeQuery = true)
 	public int mapEmergencyContactInfo(Long emgContactId,Long demogId);
 	
+	String query="Update patient_Demographic_details set race=:race, ethinicity=:ethinicity, email=:email, contact=:contact, home_address=:homeAdd where patient_id=:patientId";
+	@Modifying
+	@Transactional
+	@Query(value=query, nativeQuery = true)
+	public int updateDemographicD(Long patientId, String race,String ethinicity, String email, String contact, String homeAdd);
+	
 }

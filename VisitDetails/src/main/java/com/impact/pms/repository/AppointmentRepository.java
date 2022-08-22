@@ -21,16 +21,16 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 			+ " join diagnosis d on d.patient_id = vs.patient_id "
 			+ " join medication m on m.patient_id = vs.patient_id "
 			+ " join tbl_procedure pr on pr.patient_id = vs.patient_id "
-			+ " where vs.patient_id =1 and vs.appointment_id =1;";
+			+ " where vs.patient_id =:patientId and vs.appointment_id = :appointmentId";
 	
 	@Query(value=querry,nativeQuery = true)
 	public List<Object[]> getPatientVisitDetails(Long patientId,Long appointmentId);
 	
-	@Query(value="select * from appointment where patient_id = 1 order by appointment_date asc",nativeQuery = true)
+	@Query(value="select * from appointment_master where patient_id = :patientId order by appointment_date asc",nativeQuery = true)
 	public List<Appointment> getPatientsAppoinmentAll(Long patientId);
 	
 	@Transactional
 	@Modifying
-	@Query(value="Update appointment set did_examination_happened=1 where appointment_id=:aptId and patient_id=:patId",nativeQuery = true)
+	@Query(value="Update appointment_master set did_examination_happened=1 where appoinment_id=:aptId and patient_id=:patId",nativeQuery = true)
 	public int updateExaminationColumn(Long aptId,Long patId);
 }

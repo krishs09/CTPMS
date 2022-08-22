@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.impact.pms.model.Allergy;
+import com.impact.pms.model.Appointment;
 import com.impact.pms.model.DemographicDetailRequest;
 import com.impact.pms.model.DemographicDetails;
 import com.impact.pms.model.EmergencyContactInfo;
 import com.impact.pms.model.UserPatient;
 import com.impact.pms.repository.AllergyRepository;
+import com.impact.pms.repository.AppointmentRepository;
 //import com.impact.pms.repository.AllergyRepository;
 import com.impact.pms.repository.DemographicRepository;
 import com.impact.pms.repository.EmergencyContactRepository;
@@ -33,6 +35,9 @@ public class DemographicDetailsServiceImpl implements DemographicDetailsService 
 
 	@Autowired
 	UserDetailsRepository userRepo;
+	
+	@Autowired
+	AppointmentRepository appointmentRepository;
 
 	@Override
 	public DemographicDetails saveDmgDetail(DemographicDetailRequest request) {
@@ -112,4 +117,23 @@ public class DemographicDetailsServiceImpl implements DemographicDetailsService 
 		return dmg;
 	}
 
+	@Override
+	public List<Appointment> getAllAppointmentsL(int physicianId) {
+	//	List<Appointment> appointment = new ArrayList<Appointment>();
+	//	appointmentRepository.findAll().forEach(name -> appointment.add(name));
+	//	appointmentRepository.findAppointmentByPhysicianId(Long physicianId);
+		List<Appointment> appointments1	= appointmentRepository.findByPhysicianId(physicianId);
+		return appointments1;
+		
+	}
+
+	@Override
+	public int updateDmgDetail(DemographicDetails request) {
+		System.out.println("Update req: "+request.getPatientId()+" "+request.getRace()+" "+request.getEthinicity()+" "+request.getEmail()+" "+
+				request.getContact().toString()+" "+request.getHomeAddress());
+	int count=	dmgRepository.updateDemographicD(request.getPatientId(),request.getRace(),request.getEthinicity(),request.getEmail(),
+				request.getContact().toString(),request.getHomeAddress());
+	System.out.println("Count: "+count);
+		return count;
+	}
 }

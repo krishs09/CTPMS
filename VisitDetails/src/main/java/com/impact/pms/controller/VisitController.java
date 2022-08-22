@@ -58,7 +58,7 @@ public class VisitController {
 		return new ResponseEntity<MasterDataResponse>(mr,HttpStatus.OK);
 	}
 	
-	@GetMapping("/getallappointment")
+	@GetMapping("/patient-appointment-history")
 	public ResponseEntity<List<Appointment>> getAllAppointment(@RequestParam Long patientId){
 		
 		List<Appointment> list =service.getPatientsAppoinmentAll(patientId);

@@ -3,6 +3,7 @@ package com.impact.pms.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +22,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -42,5 +45,6 @@ public class EmergencyContactInfo {
 	private int accessNeeded;
 	@OneToOne(mappedBy = "emergencyContact")
 	private DemographicDetails demographicDetail;
+	
 	
 }
